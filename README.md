@@ -1,5 +1,10 @@
 # 🏦 Bank Loan Performance Analysis & Risk Profiling
-Python  SQL  Tableau
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
 
 ## Table of Contents
 - [Project Metadata](#project-metadata)
@@ -106,41 +111,21 @@ Python  SQL  Tableau
 - Filled 1,438 null `emp_title` values with `"unknown"`
 - Asserted 0 nulls across all critical columns
 
-### Step 3: Exploratory Data Analysis (EDA)
+### Step 3: Feature Engineering
 
-**3.1 Univariate Analysis**
-- Distribution of loan amounts, interest rates, DTI
-- Grade and sub-grade frequency breakdowns
-- Loan status proportions
-
-**3.2 Bivariate Analysis**
-- Default rate by grade, term, purpose, state
-- DTI vs repayment behavior
-- Income vs loan amount scatter analysis
-
-**3.3 Multivariate Analysis**
-- Correlation heatmap of numeric features
-- Grade × term default rate matrix
-- Risk score distribution by loan status
-
-**3.4 Visualizations**
-Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic maps
-
-### Step 4: Feature Engineering
-
-**4.1 Derived Ratios**
+**3.1 Derived Ratios**
 - `lti_ratio` = loan_amount / annual_income_capped
 - `repayment_rate` = total_payment / (installment × term_months)
 
-**4.2 Binary Flags**
+**3.2 Binary Flags**
 - `is_default` = 1 if Charged Off, else 0
 - `dti_flag` = 1 if DTI > 43% threshold
 
-**4.3 Encoding**
+**3.3 Encoding**
 - `emp_length_num` — ordinal encoding (0 = < 1 year … 10 = 10+ years)
 - `grade_score` — numeric grade (A = 7 … G = 1)
 
-**4.4 DTI Buckets**
+**3.4 DTI Buckets**
 
 | Bucket | DTI Range |
 |---|---|
@@ -149,7 +134,7 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 | High | 20–30% |
 | Very High | > 30% |
 
-### Step 5: Risk Scoring Model
+### Step 4: Risk Scoring Model
 
 **Composite risk score 0–100 (higher = riskier)**
 
@@ -170,7 +155,7 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 | High Risk | 55–74 |
 | Very High Risk | 75–100 |
 
-### Step 6: SQL Analysis
+### Step 5: SQL Analysis
 
 | Section | Covers |
 |---|---|
@@ -180,7 +165,7 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 | Segments | State-level risk, home ownership, verification status impact |
 | Dashboard KPIs | KPI card values, grade scorecard, employment tenure cohort |
 
-### Step 7: Tableau Dashboard Development
+### Step 6: Tableau Dashboard Development
 
 - Open Tableau Desktop → Connect to `bank_loan_clean.csv`
 - Build 3 dashboards: Portfolio Summary, Risk Analysis, Borrower Profile
@@ -198,15 +183,12 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 | Python | Primary programming language |
 | Pandas | Data manipulation and analysis |
 | NumPy | Numeric operations and clipping |
-| Matplotlib / Seaborn | Static visualizations |
 
 ### Business Intelligence
 
 | Tool | Purpose |
 |---|---|
 | Tableau Desktop | Interactive dashboard creation |
-| Calculated Fields | Custom KPI metrics |
-| Star Schema | Data model optimization |
 
 ### Data & Query Layer
 
@@ -221,14 +203,14 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 
 ### 5.1 Risk Segmentation
 
-| Risk Tier | Count | % Portfolio | Avg Default Rate |
-|---|---|---|---|
-| Low Risk | — | — | ~3% |
-| Medium Risk | — | — | ~9% |
-| High Risk | — | — | ~22% |
-| Very High Risk | — | — | ~38% |
+| Risk Tier | Avg Default Rate |
+|---|---|
+| Low Risk | ~3% |
+| Medium Risk | ~9% |
+| High Risk | ~22% |
+| Very High Risk | ~38% |
 
-### 5.2 Feature Importance (Default Predictors)
+### 5.2 Feature Importance
 
 | Rank | Feature | Interpretation |
 |---|---|---|
@@ -246,16 +228,7 @@ Types: Heatmaps, bar charts, box plots, scatter plots, line charts, geographic m
 - Unverified income applicants show elevated average risk scores
 - Car and small business loans have above-average default rates
 
-### 5.4 Business Impact
-
-| Metric | Impact |
-|---|---|
-| High-risk approvals | ↓ 33% |
-| Pipeline consistency | ↑ 21% |
-| Stakeholder engagement | ↑ 40% |
-| Time-to-insight | ↓ 35% |
-
 ---
 
 ## Citation
-Internal lending dataset — anonymized loan application records.
+Internal lending dataset — Anonymized loan application records.
